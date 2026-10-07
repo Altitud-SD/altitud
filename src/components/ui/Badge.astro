@@ -1,0 +1,31 @@
+---
+// Badge.astro
+interface Props {
+  variant?: "sky" | "gold" | "emerald" | "stamp";
+  pulse?: boolean;
+  class?: string;
+}
+
+const { variant = "sky", pulse = false, class: className = "" } = Astro.props;
+
+const variantStyles = {
+  sky: "bg-[#F0F9FF] border-[#BAE6FD] text-[#0369A1]",
+  gold: "bg-[#FEF9EE] border-[#F1DEAC] text-[#8D6607]",
+  emerald: "bg-[#F0FDF4] border-[#BBF7D0] text-[#15803D]",
+  stamp: "bg-[#FAF8F5] border-[#E2D9C8] text-[#574A38]",
+};
+
+const pulseColors = {
+  sky: "bg-[#0284C7]",
+  gold: "bg-[#D4AF37]",
+  emerald: "bg-[#16A34A]",
+  stamp: "bg-[#8D6607]",
+};
+---
+
+<div class={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold tracking-wide shadow-xs ${variantStyles[variant]} ${className}`}>
+  {pulse && (
+    <span class={`w-2 h-2 rounded-full ${pulseColors[variant]} animate-pulse`}></span>
+  )}
+  <slot />
+</div>

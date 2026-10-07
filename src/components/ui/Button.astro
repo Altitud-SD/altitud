@@ -1,0 +1,54 @@
+---
+// Button.astro
+interface Props {
+  href?: string;
+  variant?: "primary-gold" | "secondary-sky" | "secondary-glass" | "outline";
+  size?: "sm" | "md" | "lg";
+  class?: string;
+  type?: "button" | "submit" | "reset";
+  id?: string;
+}
+
+const {
+  href,
+  variant = "primary-gold",
+  size = "md",
+  class: className = "",
+  type = "button",
+  id,
+} = Astro.props;
+
+const baseStyles =
+  "group relative inline-flex items-center justify-center gap-2.5 font-bold transition-all duration-300 focus:outline-none rounded-xl text-center select-none";
+
+const sizeStyles = {
+  sm: "px-4 py-2 text-xs",
+  md: "px-5 py-2.5 sm:px-6 sm:py-3 text-sm",
+  lg: "px-7 py-3.5 sm:px-8 sm:py-4 text-base",
+};
+
+const variantStyles = {
+  "primary-gold":
+    "btn-gold font-extrabold tracking-tight",
+  "secondary-sky":
+    "btn-sky font-semibold",
+  "secondary-glass":
+    "bg-white/80 hover:bg-white text-slate-800 border border-slate-200/80 shadow-xs hover:shadow-md hover:border-slate-300",
+  outline:
+    "text-slate-700 hover:text-slate-900 border border-slate-300 hover:border-slate-400 bg-transparent",
+};
+
+const classes = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
+---
+
+{
+  href ? (
+    <a href={href} class={classes} id={id}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes} id={id}>
+      <slot />
+    </button>
+  )
+}

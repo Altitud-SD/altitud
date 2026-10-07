@@ -1,0 +1,65 @@
+---
+// CaseCard.astro - Clean Story Card with Before / After
+import type { CaseStudyItem } from "../../data/cases";
+
+interface Props {
+  caseStudy: CaseStudyItem;
+}
+
+const { caseStudy } = Astro.props;
+---
+
+<div class="paper-card rounded-2xl p-7 sm:p-9 bg-white border border-slate-200/80 shadow-xs">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+    
+    <!-- Left Column: Story (8 Cols) -->
+    <div class="lg:col-span-8 space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#F0F9FF] text-[#0369A1] border border-[#BAE6FD]">
+          {caseStudy.tag}
+        </span>
+        <span class="text-xs text-slate-500 font-medium">
+          Cliente: <strong class="text-slate-800">{caseStudy.client}</strong>
+        </span>
+      </div>
+
+      <h3 class="text-xl sm:text-2xl font-bold text-slate-900">
+        {caseStudy.title}
+      </h3>
+
+      <!-- Before & After Comparison -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+        <!-- Before -->
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
+          <span class="text-xs font-bold text-rose-700 uppercase tracking-wider block mb-1">
+            ✕ Antes
+          </span>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            {caseStudy.before}
+          </p>
+        </div>
+
+        <!-- After -->
+        <div class="p-4 rounded-xl bg-[#FEF9EE] border border-[#F1DEAC]">
+          <span class="text-xs font-bold text-[#8D6607] uppercase tracking-wider block mb-1">
+            ✓ Con Altitud
+          </span>
+          <p class="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
+            {caseStudy.after}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Big Golden Metric (4 Cols) -->
+    <div class="lg:col-span-4 flex flex-col justify-center items-center text-center p-6 rounded-xl bg-gradient-to-b from-[#FAF9F6] to-white border border-slate-200/70">
+      <span class="text-3xl sm:text-4xl font-black text-[#B8860B] tracking-tight mb-1">
+        {caseStudy.mainMetric.value}
+      </span>
+      <p class="text-xs sm:text-sm text-slate-600 font-medium max-w-[200px]">
+        {caseStudy.mainMetric.label}
+      </p>
+    </div>
+
+  </div>
+</div>

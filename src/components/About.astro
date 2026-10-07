@@ -1,0 +1,70 @@
+---
+// About.astro - Clean Philosophy & 3-Step Process
+import { aboutData } from "../data/about";
+import Badge from "./ui/Badge.astro";
+---
+
+<section id="quienes-somos" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Section Header -->
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <Badge variant="stamp" class="mb-4 uppercase font-bold">
+      {aboutData.badge}
+    </Badge>
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+      {aboutData.title}
+    </h2>
+    <p class="text-base text-slate-600 leading-relaxed">
+      {aboutData.subtitle}
+    </p>
+  </div>
+
+  <!-- 3 Value Pillars -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+    {aboutData.pillars.map((pillar) => (
+      <div class="p-7 rounded-2xl bg-white border border-slate-200/80 shadow-2xs">
+        <div class="w-10 h-10 rounded-xl bg-[#FAF9F6] border border-slate-200 flex items-center justify-center text-[#0284C7] mb-4">
+          {pillar.icon === "message" && (
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          )}
+          {pillar.icon === "lock" && (
+            <svg class="w-5 h-5 text-[#B8860B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          )}
+          {pillar.icon === "users" && (
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          )}
+        </div>
+        <h3 class="text-base font-bold text-slate-900 mb-2">{pillar.title}</h3>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">{pillar.description}</p>
+      </div>
+    ))}
+  </div>
+
+  <!-- 3 Steps Process Roadmap -->
+  <div id="proceso" class="p-8 sm:p-10 rounded-3xl bg-[#FFFDF9] border border-[#F1DEAC]">
+    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 text-center mb-8">
+      {aboutData.processTitle}
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {aboutData.steps.map((step) => (
+        <div class="p-5 rounded-xl bg-white border border-slate-200/80">
+          <div class="w-7 h-7 rounded-full bg-[#FEF9EE] border border-[#F1DEAC] flex items-center justify-center text-xs font-black text-[#8D6607] mb-3">
+            {step.number}
+          </div>
+          <h4 class="text-sm font-bold text-slate-900 mb-1.5">{step.title}</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

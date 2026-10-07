@@ -1,0 +1,60 @@
+---
+// Hero.astro - Clean, High-Readability Hero Section
+import { heroData } from "../data/hero";
+import Badge from "./ui/Badge.astro";
+import Button from "./ui/Button.astro";
+---
+
+<section class="pt-10 pb-16 sm:pt-16 sm:pb-24 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+  <!-- Badge -->
+  <div class="flex justify-center mb-6">
+    <Badge variant="gold" class="font-bold uppercase tracking-wider">
+      {heroData.badge}
+    </Badge>
+  </div>
+
+  <!-- Main Headline -->
+  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6 max-w-4xl mx-auto">
+    {heroData.headline.start}
+    <span class="text-gradient-sky underline decoration-[#BAE6FD] decoration-wavy underline-offset-8">
+      {heroData.headline.highlight}
+    </span>
+    {heroData.headline.end}
+  </h1>
+
+  <!-- Subtitle -->
+  <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10">
+    {heroData.subtitle}
+  </p>
+
+  <!-- CTA Group -->
+  <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+    <Button href={heroData.ctaPrimary.href} variant="primary-gold" size="lg" class="w-full sm:w-auto shadow-md">
+      <span>{heroData.ctaPrimary.label}</span>
+      <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    </Button>
+
+    <Button href={heroData.ctaSecondary.href} variant="secondary-sky" size="lg" class="w-full sm:w-auto">
+      <span>{heroData.ctaSecondary.label}</span>
+      <span class="text-[#0284C7]">↓</span>
+    </Button>
+  </div>
+
+  <!-- Key Metrics (Clean & Scannable Grid) -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-slate-200/80">
+    {heroData.metrics.map((metric) => (
+      <div class="p-6 rounded-2xl bg-white border border-slate-200/70 shadow-2xs">
+        <div class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-1">
+          <span>{metric.value}</span>
+          {metric.suffix && (
+            <span class="text-[#B8860B] text-2xl font-bold">{metric.suffix}</span>
+          )}
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 font-medium">{metric.label}</p>
+      </div>
+    ))}
+  </div>
+</section>

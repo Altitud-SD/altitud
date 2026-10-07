@@ -1,1 +1,129 @@
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Fondos luminosos y orgánicos */
+    --bg-page: #FAF9F6;           /* Blanco cálido hueso / papel fino */
+    --bg-surface: #FFFFFF;        /* Blanco puro para tarjetas elevadas */
+    --bg-subtle: #F1F5F9;         /* Gris/celeste muy suave para contrastes */
+    --bg-warm-tint: #FFFDF9;      /* Tinte arena solar */
+
+    /* Celeste Argentino Luminoso & Humano */
+    --sky-primary: #0284C7;       /* Celeste argentino profesional y profundo */
+    --sky-vibrant: #38BDF8;       /* Celeste cielo luminoso */
+    --sky-soft: #E0F2FE;          /* Celeste pastel para fondos y chips */
+    --sky-glow: rgba(56, 189, 248, 0.15);
+
+    /* Dorado Solar Puro (Sol de Mayo / Oro Noble - Cero naranja) */
+    --gold-primary: #D4AF37;      /* Oro clásico elegante */
+    --gold-vibrant: #E5C158;      /* Oro brillante / reflejo de luz */
+    --gold-deep: #B8860B;         /* Oro sombra / acento tipográfico legible */
+    --gold-soft: #FEF9EE;         /* Fondo dorado suave / champagne */
+    --gold-border: #F1DEAC;       /* Borde dorado sutil */
+    --gold-glow: rgba(212, 175, 55, 0.25);
+
+    /* Tipografía y Contraste Cálido */
+    --text-heading: #0F172A;      /* Azul noche carbón profundo para títulos */
+    --text-body: #334155;         /* Pizarra suave de alta legibilidad para párrafos */
+    --text-muted: #64748B;        /* Gris medio para metadatos y notas */
+    --text-subtle: #94A3B8;       /* Gris claro para detalles secundarios */
+
+    /* Bordes y Sombras Táctiles */
+    --border-subtle: rgba(15, 23, 42, 0.07);
+    --border-focus: rgba(2, 132, 199, 0.35);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-body);
+    color-scheme: light;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-heading);
+    letter-spacing: -0.025em;
+  }
+
+  ::selection {
+    background-color: #BAE6FD;
+    color: #0F172A;
+  }
+}
+
+/* Tarjetas táctiles estilo Papel & Estudio de Diseño */
+.paper-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03), 0 1px 4px 0 rgba(15, 23, 42, 0.02);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.paper-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(2, 132, 199, 0.25);
+  box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.07), 0 4px 12px 0 rgba(2, 132, 199, 0.04);
+}
+
+/* Botón Oro Solar Noble (Brillo fino sin tonalidad naranja) */
+.btn-gold {
+  background: linear-gradient(135deg, #F9DF88 0%, #ECC35B 45%, #D4AF37 100%);
+  color: #1A1302;
+  border: 1px solid #E8C360;
+  box-shadow: 0 4px 14px -2px rgba(212, 175, 55, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #FFF0B3 0%, #F5CE68 45%, #E5BE45 100%);
+  box-shadow: 0 8px 25px -4px rgba(212, 175, 55, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transform: translateY(-1.5px);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+/* Botón Celeste Humano / Calmo */
+.btn-sky {
+  background: #FFFFFF;
+  color: #0369A1;
+  border: 1px solid #BAE6FD;
+  box-shadow: 0 2px 8px -1px rgba(2, 132, 199, 0.08);
+  transition: all 0.3s ease;
+}
+
+.btn-sky:hover {
+  background: #F0F9FF;
+  border-color: #38BDF8;
+  color: #0284C7;
+  transform: translateY(-1.5px);
+}
+
+/* Gradientes Editoriales para Texto */
+.text-gradient-sky {
+  background: linear-gradient(135deg, #0369A1 0%, #0284C7 50%, #0EA5E9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #B8860B 0%, #CFA028 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Insignia / Sello artesanal 'Handcrafted' */
+.stamp-badge {
+  background: #FEF9EE;
+  border: 1px solid #F1DEAC;
+  color: #8D6607;
+}
+
+/* Glow suave de fondo para luz natural */
+.sun-glow {
+  background: radial-gradient(circle, rgba(254, 240, 199, 0.5) 0%, rgba(240, 249, 255, 0.3) 50%, transparent 70%);
+}
